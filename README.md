@@ -4,7 +4,7 @@ Este repositorio contiene la implementación completa de una arquitectura de red
 
 ---
 
-## 🚀 Características Principales
+##  Características Principales
 * **Punto de Acceso Autónomo (AP):** Configuración de tarjeta inalámbrica en modo Maestro mediante `hostapd`.
 * **Servicios de Red Integrados:** Asignación dinámica de IP y resolución de nombres con `dnsmasq`.
 * **Seguridad y Control de Tráfico:** Filtrado de paquetes, NAT y redirección HTTP mediante reglas de `nftables`.
