@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>Portal - Estudiante</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="font-family: sans-serif; text-align: center; padding: 20px;">
+    <h2>¡Hola, {{ username }}!</h2>
+    <p>Tienes acceso a Internet por <span id="timer" style="font-weight: bold; color: blue;"></span>.</p>
+    
+    <div style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; text-align: left;">
+        <h3 style="margin-top: 0;">Micro-Quiz de la Semana</h3>
+        <p>¿Qué ventaja principal ofrece <b>SHA-256</b> sobre <b>MD5</b> al realizar análisis estático de archivos?</p>
+        <form onsubmit="alert('¡Respuesta enviada!'); return false;">
+            <label><input type="radio" name="q1"> SHA-256 es computacionalmente más ligero.</label><br>
+            <label><input type="radio" name="q1"> MD5 es incompatible con sistemas Linux.</label><br>
+            <label><input type="radio" name="q1"> SHA-256 es significativamente más resistente a colisiones.</label><br><br>
+            <button type="submit">Enviar respuesta</button>
+        </form>
+    </div>
+    <br>
+    <form action="/logout" method="POST">
+        <input type="hidden" name="username" value="{{ username }}">
+        <button type="submit" style="background-color: #ff4c4c; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1em;">Cerrar Sesión</button>
+    </form>
+    <script>
+        let timeLeft = {{ timeout }};
+        setInterval(() => {
+            if(timeLeft <= 0) location.reload();
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById('timer').innerText = `${m}m ${s}s`;
+            timeLeft--;
+        }, 1000);
+    </script>
+</body>
+</html>

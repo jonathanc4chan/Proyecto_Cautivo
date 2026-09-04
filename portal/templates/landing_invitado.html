@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Portal - Invitado</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="font-family: sans-serif; text-align: center; padding: 20px;">
+    <h2>Bienvenido a la red de invitados</h2>
+    <div style="background: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <p><b>Tiempo de sesión restante:</b> <span id="timer" style="color: red; font-size: 1.2em;"></span></p>
+    </div>
+    <h3>Buenas prácticas de seguridad</h3>
+    <ul style="text-align: left; display: inline-block;">
+        <li>Evite realizar transacciones bancarias en redes públicas.</li>
+        <li>Asegúrese de navegar por sitios con HTTPS.</li>
+        <li>Su tráfico está siendo monitoreado por motivos de calidad.</li>
+    </ul>
+    <script>
+        let timeLeft = {{ timeout }};
+        setInterval(() => {
+            if(timeLeft <= 0) location.reload();
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById('timer').innerText = `${m}m ${s}s`;
+            timeLeft--;
+        }, 1000);
+    </script>
+</body>
+</html>

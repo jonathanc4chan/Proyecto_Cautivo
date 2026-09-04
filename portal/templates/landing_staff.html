@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Portal - Docentes</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="font-family: sans-serif; text-align: center; padding: 20px;">
+    <h2>Portal Administrativo</h2>
+    <p>Sesión activa: <span id="timer"></span></p>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 300px; margin: 0 auto;">
+        <button style="padding: 10px;">Panel de Pronóstico de Demanda</button>
+        <button style="padding: 10px;">Gestor de Contenedores de Red</button>
+        <button style="padding: 10px;">Consola de Mantenimiento PostgreSQL</button>
+    </div>
+    <br>
+    <form action="/logout" method="POST">
+        <input type="hidden" name="username" value="{{ username }}">
+        <button type="submit" style="background-color: #ff4c4c; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1em;">Cerrar Sesión</button>
+    </form>
+    <script>
+        let timeLeft = {{ timeout }};
+        setInterval(() => {
+            if(timeLeft <= 0) location.reload();
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById('timer').innerText = `${m}m ${s}s`;
+            timeLeft--;
+        }, 1000);
+    </script>
+</body>
+</html>
